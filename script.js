@@ -80,8 +80,28 @@ const $point = document.querySelector(".point")
             this.point++
             $point.innerHTML = this.point
             this.snakeplayerH+=5
+           
             
         }
+     }
+     
+     gameOver(){
+
+        if(this.px+this.snakeplayerW+1 > canvas.width || this.px < 0 ){
+            this.px = this.start
+    
+           this.point = 0
+           $point.innerHTML= this.point
+            this.snakeplayerH = 25
+          }
+
+          if(this.py+this.snakeplayerH+1 > canvas.height || this.py < 0 ){
+            this.py = this.start
+            this.point = 0
+           $point.innerHTML= this.point
+            this.snakeplayerH = 20
+
+          }
      }
 
    
@@ -111,18 +131,11 @@ const $point = document.querySelector(".point")
          this.ctx.fillStyle = "#f00f"
          this.ctx.fillRect(this.px, this.py, this.snakeplayerW, this.snakeplayerH) 
 
-         if(this.px+this.snakeplayerW+1 > canvas.width || this.px < 0 ){
-            this.px = this.start
-          }
-
-          if(this.py+this.snakeplayerH+1 > canvas.height || this.py < 0 ){
-            this.py = this.start
-          }
 
           this.ctx.fillStyle= "#00ff"
           this.ctx.fillRect(this.positionX, this.positionY, this.food,this.food)
 
-
+         this.gameOver()
          this.collision()
           
 
