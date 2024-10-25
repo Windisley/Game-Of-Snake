@@ -66,6 +66,8 @@ const $point = document.querySelector(".point")
         this.positionX = Math.random()* (canvas.width - this.food)
         this.positionY = Math.random()*(canvas.height - this.food)
         this.point = 0
+        this.velX = 2
+        this.velY = 2
      }
 
      collision(){
@@ -83,13 +85,37 @@ const $point = document.querySelector(".point")
            
             
         }
+
+        if(this.point > 5){
+            this.velX=4
+            this.velY=4
+        }else{
+            this.velX = 2
+            this.velY= 2
+        }
+
+        if(this.point > 10){
+            this.velX=5
+            this.velY=5
+        }else{
+            this.velX = 2
+            this.velY= 2
+        }
+
+        if(this.point > 20){
+            this.velX=7
+            this.velY=7
+        }else{
+            this.velX = 2
+            this.velY= 2
+        }
      }
      
      gameOver(){
 
         if(this.px+this.snakeplayerW+1 > canvas.width || this.px < 0 ){
             this.px = this.start
-    
+            this.py = this.start
            this.point = 0
            $point.innerHTML= this.point
             this.snakeplayerH = 25
@@ -97,9 +123,10 @@ const $point = document.querySelector(".point")
 
           if(this.py+this.snakeplayerH+1 > canvas.height || this.py < 0 ){
             this.py = this.start
+            this.px = this.start
             this.point = 0
            $point.innerHTML= this.point
-            this.snakeplayerH = 20
+            this.snakeplayerH = 25
 
           }
      }
@@ -114,18 +141,18 @@ const $point = document.querySelector(".point")
         
              
              if(this.teclado.right){
-                 this.px+=2
+                 this.px+=this.velX
                 }
              if(this.teclado.left){
-                this.px-=2
+                this.px-=this.velX
              } 
              
              if(this.teclado.up){
-                this.py-=2
+                this.py-=this.velY
              } 
     
              if(this.teclado.down){
-                this.py+=2
+                this.py+=this.velY
              } 
         
          this.ctx.fillStyle = "#f00f"
