@@ -1,6 +1,6 @@
 const canvas = document.querySelector("#canvas")
 const ctx = canvas.getContext("2d")
-
+const $point = document.querySelector(".point")
 
    class Game{
        constructor(ctx){
@@ -64,17 +64,22 @@ const ctx = canvas.getContext("2d")
         this.food = 18
         this.positionX = Math.random()* (canvas.width - this.food)
         this.positionY = Math.random()*(canvas.height - this.food)
+        this.point = 0
      }
 
      collision(){
         if (
-            this.px < this.positionX + this.food && // Lado direito da snakeplayer ultrapassa o lado esquerdo da food
-            this.px + this.snakeplayer > this.positionX && // Lado esquerdo da snakeplayer ultrapassa o lado direito da food
-            this.py < this.positionY + this.food && // Lado inferior da snakeplayer ultrapassa o lado superior da food
-            this.py + this.snakeplayer > this.positionY // Lado superior da snakeplayer ultrapassa o lado inferior da food
+            this.px < this.positionX + this.food &&
+            this.px + this.snakeplayer > this.positionX && 
+            this.py < this.positionY + this.food &&
+            this.py + this.snakeplayer > this.positionY 
         ){
             this.positionX = Math.random() * (canvas.width - this.food)
             this.positionY = Math.random() * (canvas.height - this.food)
+            this.point++
+
+            $point.innerHTML = this.point
+            
         }
      }
 
