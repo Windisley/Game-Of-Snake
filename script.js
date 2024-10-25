@@ -86,28 +86,18 @@ const $point = document.querySelector(".point")
             
         }
 
-        if(this.point > 5){
-            this.velX=4
-            this.velY=4
-        }else{
-            this.velX = 2
-            this.velY= 2
-        }
-
-        if(this.point > 10){
-            this.velX=5
-            this.velY=5
-        }else{
-            this.velX = 2
-            this.velY= 2
-        }
-
         if(this.point > 20){
-            this.velX=7
-            this.velY=7
-        }else{
-            this.velX = 2
-            this.velY= 2
+            this.velX = 7;
+            this.velY = 7;
+        } else if(this.point > 10){
+            this.velX = 5;
+            this.velY = 5;
+        } else if(this.point > 5){
+            this.velX = 4;
+            this.velY = 4;
+        } else {
+            this.velX = 2;
+            this.velY = 2;
         }
      }
      
@@ -118,7 +108,8 @@ const $point = document.querySelector(".point")
             this.py = this.start
            this.point = 0
            $point.innerHTML= this.point
-            this.snakeplayerH = 25
+           this.snakeplayerH = 20; 
+           this.snakeplayerW = 25;
           }
 
           if(this.py+this.snakeplayerH+1 > canvas.height || this.py < 0 ){
@@ -126,7 +117,8 @@ const $point = document.querySelector(".point")
             this.px = this.start
             this.point = 0
            $point.innerHTML= this.point
-            this.snakeplayerH = 25
+           this.snakeplayerH = 20;  
+           this.snakeplayerW = 25;
 
           }
      }
