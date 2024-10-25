@@ -57,7 +57,8 @@ const $point = document.querySelector(".point")
 
      config(){
        
-        this.snakeplayer = 25
+        this.snakeplayerW = 25
+        this.snakeplayerH = 20
         this.px = 250
         this.py = 250
         this.start = 250
@@ -70,15 +71,15 @@ const $point = document.querySelector(".point")
      collision(){
         if (
             this.px < this.positionX + this.food &&
-            this.px + this.snakeplayer > this.positionX && 
+            this.px + this.snakeplayerW > this.positionX && 
             this.py < this.positionY + this.food &&
-            this.py + this.snakeplayer > this.positionY 
+            this.py + this.snakeplayerH > this.positionY 
         ){
             this.positionX = Math.random() * (canvas.width - this.food)
             this.positionY = Math.random() * (canvas.height - this.food)
             this.point++
-
             $point.innerHTML = this.point
+            this.snakeplayerH+=5
             
         }
      }
@@ -108,13 +109,13 @@ const $point = document.querySelector(".point")
              } 
         
          this.ctx.fillStyle = "#f00f"
-         this.ctx.fillRect(this.px, this.py, this.snakeplayer, this.snakeplayer) 
+         this.ctx.fillRect(this.px, this.py, this.snakeplayerW, this.snakeplayerH) 
 
-         if(this.px+this.snakeplayer+1 > canvas.width || this.px < 0 ){
+         if(this.px+this.snakeplayerW+1 > canvas.width || this.px < 0 ){
             this.px = this.start
           }
 
-          if(this.py+this.snakeplayer+1 > canvas.height || this.py < 0 ){
+          if(this.py+this.snakeplayerH+1 > canvas.height || this.py < 0 ){
             this.py = this.start
           }
 
